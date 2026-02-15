@@ -18,19 +18,19 @@
 
   - name: Remove Zip file
     ansible.builtin.file:
-      path: /tmp/catalogue.zip
+      path: /tmp/{{ comment }}.zip
       state: absent
 
   - name: Download application code
     ansible.builtin.get_url:
-      url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip
-      dest: /tmp/catalogue.zip
+      url: https://roboshop-artifacts.s3.amazonaws.com/{{ component }}-v3.zip
+      dest: /tmp/{{ comment }}.zip
   
   - name: removing code
     ansible.builtin.command: rm -rf /app/*
 
   - name: unzipping code
     ansible.builtin.unarchive:
-      src: /tmp/catalogue.zip
+      src: /tmp/{{ comment }}.zip
       dest: /app
       remote_src: yes
