@@ -34,7 +34,7 @@
 
 - name: copy nginx.conf
   ansible.builtin.template:
-    src: "{{ component }}.conf.j2"
+    src: "{{ component }}.repo"
     dest: /etc/nginx/nginx.conf
     remote_src: yes
 
