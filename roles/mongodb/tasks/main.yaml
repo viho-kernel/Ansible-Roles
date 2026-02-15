@@ -1,9 +1,9 @@
     - name: copying mongo repo file
       ansible.builtin.copy:
-        src: mongo.repo
+        src: mongo.repo.j2
         dest: /etc/yum.repos.d/mongo.repo
 
-    - name: installing mongodb
+    - name: installing {{ component }}
       ansible.builtin.dnf:
         name: mongodb-org
         state: present 
